@@ -7,12 +7,14 @@ import com.sammy.malum.common.effect.aura.*;
 import com.sammy.malum.common.enchantment.*;
 import com.sammy.malum.common.entity.nitrate.*;
 import com.sammy.malum.common.item.cosmetic.curios.*;
+import com.sammy.malum.common.item.curiosities.*;
 import com.sammy.malum.common.item.curiosities.curios.runes.madness.*;
 import com.sammy.malum.common.item.curiosities.curios.runes.miracle.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.misc.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.prospector.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.rotten.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.weeping.*;
+import com.sammy.malum.compability.tetra.*;
 import com.sammy.malum.core.handlers.*;
 import com.sammy.malum.core.listeners.*;
 import net.minecraft.core.*;
@@ -47,12 +49,9 @@ public class RuntimeEvents {
         MalumPlayerDataCapability.playerJoin(event);
         CurioTokenOfGratitude.giveItem(event);
         SoulDataHandler.updateAi(event);
-        /*
         if (TetraCompat.LOADED) {
             TetraCompat.LoadedOnly.fireArrow(event);
         }
-
-         */
     }
 
 
@@ -71,6 +70,11 @@ public class RuntimeEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void anvilUpdate(AnvilUpdateEvent event) {
+        CatalystFlingerItem.anvilUpdate(event);
     }
 
 
