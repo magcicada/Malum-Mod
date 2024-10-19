@@ -52,8 +52,17 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> SPIRIT_PICKUP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_picked_up")));
     public static final RegistryObject<SoundEvent> SOUL_SHATTER = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("a_soul_shatters")));
 
+    public static final RegistryObject<SoundEvent> SCYTHE_SWEEP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_sweeps")));
     public static final RegistryObject<SoundEvent> SCYTHE_CUT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_cuts")));
-    public static final RegistryObject<SoundEvent> WEIGHT_OF_WORLDS_SLASH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("weight_of_worlds_slashes")));
+    public static final RegistryObject<SoundEvent> EDGE_OF_DELIVERANCE_SWEEP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("edge_of_deliverance_sweeps")));
+    public static final RegistryObject<SoundEvent> EDGE_OF_DELIVERANCE_CUT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("edge_of_deliverance_cuts")));
+
+    public static final RegistryObject<SoundEvent> SCYTHE_THROW = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_thrown")));
+    public static final RegistryObject<SoundEvent> SCYTHE_SPINS = register(SoundEvent.createFixedRangeEvent(MalumMod.malumPath("scythe_spins_happily"), 24f));
+    public static final RegistryObject<SoundEvent> SCYTHE_CATCH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_caught")));
+
+    public static final RegistryObject<SoundEvent> TYRVING_SLASH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("tyrving_slashes_twice")));
+    public static final RegistryObject<SoundEvent> WEIGHT_OF_WORLDS_CUT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("weight_of_worlds_cuts")));
 
     public static final RegistryObject<SoundEvent> STAFF_FIRES = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("staff_fires")));
     public static final RegistryObject<SoundEvent> STAFF_POWERS_UP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("staff_powers_up")));
@@ -63,9 +72,10 @@ public class SoundRegistry {
 
     public static final RegistryObject<SoundEvent> AURIC_FLAME_MOTIF = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("auric_flame_motif")));
     public static final RegistryObject<SoundEvent> DRAINING_MOTIF = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("draining_motif")));
+    public static final RegistryObject<SoundEvent> MALIGNANT_METAL_MOTIF = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("malignant_metal_motif")));
 
-    public static final RegistryObject<SoundEvent> ALTAR_CRAFT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_altar_completes_infusion")));
     public static final RegistryObject<SoundEvent> ALTAR_LOOP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_altar_infuses")));
+    public static final RegistryObject<SoundEvent> ALTAR_CRAFT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_altar_completes_infusion")));
     public static final RegistryObject<SoundEvent> ALTAR_CONSUME = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_altar_absorbs_item")));
     public static final RegistryObject<SoundEvent> ALTAR_SPEED_UP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_altar_speeds_up")));
 
@@ -86,9 +96,13 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> TOTEM_CANCELLED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_rite_cancelled")));
     public static final RegistryObject<SoundEvent> TOTEM_ENGRAVE = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_engraved")));
 
-    public static final RegistryObject<SoundEvent> CRUCIBLE_CRAFT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_crucible_completes_focusing")));
     public static final RegistryObject<SoundEvent> CRUCIBLE_LOOP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_crucible_focuses")));
+    public static final RegistryObject<SoundEvent> CRUCIBLE_CRAFT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_crucible_completes_focusing")));
     public static final RegistryObject<SoundEvent> IMPETUS_CRACK = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("impetus_takes_damage")));
+
+    public static final RegistryObject<SoundEvent> REPAIR_PYLON_LOOP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("repair_pylon_eagerly_hums")));
+    public static final RegistryObject<SoundEvent> REPAIR_PYLON_REPAIR_START = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("repair_pylon_begins_repairing")));
+    public static final RegistryObject<SoundEvent> REPAIR_PYLON_REPAIR_FINISH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("repair_pylon_finishes_repairing")));
 
     public static final RegistryObject<SoundEvent> ALTERATION_PLINTH_ALTERS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("alteration_plinth_alters")));
 
@@ -100,16 +114,19 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> VOID_EATS_GUNK = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("void_eats_gunk")));
 
     public static final RegistryObject<SoundEvent> AERIAL_FALL = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("aerial_magic_swooshes")));
-    public static final RegistryObject<SoundEvent> VOID_SLASH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("void_slash_swooshes")));
 
     public static final RegistryObject<SoundEvent> CONCENTRATED_GLUTTONY_DRINK = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("concentrated_gluttony_drink")));
 
-    public static final RegistryObject<SoundEvent> HIDDEN_BLADE_STRIKES = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hidden_blade_strikes")));
-    public static final RegistryObject<SoundEvent> MALIGNANT_METAL_RESONATES = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("malignant_metal_resonates")));
+    public static final RegistryObject<SoundEvent> HIDDEN_BLADE_CHARGED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hidden_blade_charged")));
+    public static final RegistryObject<SoundEvent> HIDDEN_BLADE_PRIMED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hidden_blade_primed")));
+    public static final RegistryObject<SoundEvent> HIDDEN_BLADE_DISRUPTED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hidden_blade_disrupted")));
+    public static final RegistryObject<SoundEvent> HIDDEN_BLADE_UNLEASHED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hidden_blade_unleashed")));
     public static final RegistryObject<SoundEvent> HUNGRY_BELT_FEEDS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("hungry_belt_feeds")));
     public static final RegistryObject<SoundEvent> VORACIOUS_RING_FEEDS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("voracious_ring_feeds")));
     public static final RegistryObject<SoundEvent> GRUESOME_RING_FEEDS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("gruesome_ring_feeds")));
     public static final RegistryObject<SoundEvent> FLESH_RING_ABSORBS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("flesh_ring_absorbs")));
+    public static final RegistryObject<SoundEvent> ECHOING_RING_ABSORBS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("echoing_ring_absorbs")));
+
     public static final RegistryObject<SoundEvent> SPIRIT_MOTE_CREATED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("spirit_mote_created")));
 
     public static final RegistryObject<SoundEvent> CATALYST_LOBBER_UNLOCKED = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("catalyst_lobber_unlocked")));
@@ -241,8 +258,8 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> ETHER_PLACE = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("ether_place")));
     public static final RegistryObject<SoundEvent> ETHER_BREAK = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("ether_break")));
 
-    public static final RegistryObject<SoundEvent> THE_DEEP_BECKONS = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("the_deep_beckons")));
-    public static final RegistryObject<SoundEvent> THE_HEAVENS_SIGN = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("the_heavens_sing")));
+    public static final RegistryObject<SoundEvent> THE_DEEP_BECKONS = register(SoundEvent.createFixedRangeEvent(MalumMod.malumPath("the_deep_beckons"), 32f));
+    public static final RegistryObject<SoundEvent> THE_HEAVENS_SIGN = register(SoundEvent.createFixedRangeEvent(MalumMod.malumPath("the_heavens_sing"), 32f));
 
     public static final RegistryObject<SoundEvent> ARCANE_ELEGY = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("arcane_elegy")));
     public static final RegistryObject<SoundEvent> AESTHETICA = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("aesthetica")));

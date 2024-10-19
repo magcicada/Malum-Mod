@@ -129,6 +129,11 @@ public class MalumItemTags extends ItemTagsProvider {
         safeCopy(BlockTagRegistry.TWISTED_WALLS, ItemTagRegistry.TWISTED_WALLS);
         safeCopy(BlockTagRegistry.TWISTED_BLOCKS, ItemTagRegistry.TWISTED_BLOCKS);
 
+        tag(ItemTagRegistry.ASPECTED_SPIRITS).add(
+                SACRED_SPIRIT.get(), WICKED_SPIRIT.get(), ARCANE_SPIRIT.get(), ELDRITCH_SPIRIT.get(),
+                AERIAL_SPIRIT.get(), AQUEOUS_SPIRIT.get(), EARTHEN_SPIRIT.get(), INFERNAL_SPIRIT.get());
+        tag(ItemTagRegistry.SPIRITS).addTag(ItemTagRegistry.ASPECTED_SPIRITS).add(UMBRAL_SPIRIT.get());
+
         tag(ItemTagRegistry.SCYTHE).add(CRUDE_SCYTHE.get(), SOUL_STAINED_STEEL_SCYTHE.get(), CREATIVE_SCYTHE.get());
         tag(ItemTagRegistry.STAFF).add(MNEMONIC_HEX_STAFF.get(), STAFF_OF_THE_AURIC_FLAME.get(), EROSION_SCEPTER.get());
 
@@ -186,7 +191,7 @@ public class MalumItemTags extends ItemTagsProvider {
                         RUNE_OF_UNNATURAL_STAMINA.get(), RUNE_OF_TWINNED_DURATION.get(),
                         RUNE_OF_TOUGHNESS.get(), RUNE_OF_IGNEOUS_SOLACE.get())
                 // Trinkets
-                .add(RING_OF_THE_ENDLESS_WELL.get(), RING_OF_GROWING_FLESH.get(),
+                .add(RING_OF_THE_ENDLESS_WELL.get(), RING_OF_GROWING_FLESH.get(), RING_OF_ECHOING_ARCANA.get(),
                         RING_OF_GRUESOME_CONCENTRATION.get(), NECKLACE_OF_THE_HIDDEN_BLADE.get(),
                         NECKLACE_OF_THE_WATCHER.get(), BELT_OF_THE_LIMITLESS.get())
                 // Augments
