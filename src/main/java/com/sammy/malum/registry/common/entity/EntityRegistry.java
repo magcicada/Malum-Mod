@@ -4,9 +4,10 @@ import com.sammy.malum.MalumMod;
 import com.sammy.malum.client.renderer.entity.*;
 import com.sammy.malum.client.renderer.entity.bolt.*;
 import com.sammy.malum.client.renderer.entity.nitrate.*;
+import com.sammy.malum.client.renderer.entity.scythe.*;
 import com.sammy.malum.common.entity.activator.*;
 import com.sammy.malum.common.entity.bolt.*;
-import com.sammy.malum.common.entity.boomerang.ScytheBoomerangEntity;
+import com.sammy.malum.common.entity.scythe.*;
 import com.sammy.malum.common.entity.hidden_blade.*;
 import com.sammy.malum.common.entity.nitrate.EthericNitrateEntity;
 import com.sammy.malum.common.entity.nitrate.VividNitrateEntity;
@@ -49,7 +50,7 @@ public class EntityRegistry {
                     .build(MalumMod.malumPath("vivid_nitrate").toString()));
 
     public static final RegistryObject<EntityType<ScytheBoomerangEntity>> SCYTHE_BOOMERANG = ENTITY_TYPES.register("scythe_boomerang",
-            () -> EntityType.Builder.<ScytheBoomerangEntity>of((e, w) -> new ScytheBoomerangEntity(w), MobCategory.MISC).sized(2.5F, 0.75F).clientTrackingRange(10)
+            () -> EntityType.Builder.<ScytheBoomerangEntity>of((e, w) -> new ScytheBoomerangEntity(w), MobCategory.MISC).sized(2f, 2f).clientTrackingRange(20)
                     .build(MalumMod.malumPath("scythe_boomerang").toString()));
 
     public static final RegistryObject<EntityType<SpiritCollectionActivatorEntity>> SPIRIT_COLLECTION_ACTIVATOR = ENTITY_TYPES.register("pneuma_void",

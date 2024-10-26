@@ -57,8 +57,10 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> EDGE_OF_DELIVERANCE_SWEEP = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("edge_of_deliverance_sweeps")));
     public static final RegistryObject<SoundEvent> EDGE_OF_DELIVERANCE_CUT = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("edge_of_deliverance_cuts")));
 
+    public static final RegistryObject<SoundEvent> SCYTHE_ASCENSION = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_user_ascends")));
+
     public static final RegistryObject<SoundEvent> SCYTHE_THROW = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_thrown")));
-    public static final RegistryObject<SoundEvent> SCYTHE_SPINS = register(SoundEvent.createFixedRangeEvent(MalumMod.malumPath("scythe_spins_happily"), 24f));
+    public static final RegistryObject<SoundEvent> SCYTHE_SPINS = register(SoundEvent.createFixedRangeEvent(MalumMod.malumPath("scythe_spins_happily"), 32f));
     public static final RegistryObject<SoundEvent> SCYTHE_CATCH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("scythe_caught")));
 
     public static final RegistryObject<SoundEvent> TYRVING_SLASH = register(SoundEvent.createVariableRangeEvent(MalumMod.malumPath("tyrving_slashes_twice")));

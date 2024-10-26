@@ -19,6 +19,8 @@
     "client.FontStringRenderOutputMixin",
     "client.ForgeIngameGuiMixin",
     "client.GlyphRenderTypesMixin",
+    "client.ItemInHandLayerMixin",
+    "client.ItemInHandRendererMixin",
     "client.LocalPlayerMixin"
   ],
   "injectors": {

@@ -1,21 +1,24 @@
 package com.sammy.malum.common.item.curiosities.weapons.scythe;
 
+import com.google.common.collect.*;
+import com.sammy.malum.common.enchantment.scythe.*;
 import com.sammy.malum.common.item.*;
 import com.sammy.malum.core.helpers.*;
-import com.sammy.malum.core.systems.spirit.*;
 import com.sammy.malum.registry.common.*;
 import com.sammy.malum.registry.common.item.*;
+import net.minecraft.nbt.*;
 import net.minecraft.sounds.*;
 import net.minecraft.util.*;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.*;
+import net.minecraft.world.level.*;
+import net.minecraftforge.event.*;
 import net.minecraftforge.event.entity.living.*;
 import team.lodestar.lodestone.helpers.*;
-import team.lodestar.lodestone.registry.common.tag.*;
 import team.lodestar.lodestone.systems.item.*;
-
-import javax.annotation.*;
 
 public class MalumScytheItem extends ModCombatItem implements IMalumEventResponderItem {
 
@@ -24,11 +27,17 @@ public class MalumScytheItem extends ModCombatItem implements IMalumEventRespond
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment.equals(Enchantments.SWEEPING_EDGE)) {
-            return true;
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        var stack = player.getItemInHand(hand);
+        if (stack.getEnchantmentLevel(EnchantmentRegistry.REBOUND.get()) > 0) {
+            ReboundEnchantment.throwScythe(level, player, hand, stack);
+            return InteractionResultHolder.success(stack);
         }
-        return super.canApplyAtEnchantingTable(stack, enchantment);
+        if (stack.getEnchantmentLevel(EnchantmentRegistry.ASCENSION.get()) > 0) {
+            AscensionEnchantment.triggerAscension(level, player, hand, stack);
+            return InteractionResultHolder.success(stack);
+        }
+        return super.use(level, player, hand);
     }
 
     @Override
@@ -42,7 +51,9 @@ public class MalumScytheItem extends ModCombatItem implements IMalumEventRespond
         }
         boolean canSweep = canSweep(attacker);
         var particle = ParticleHelper.createSlashingEffect(ParticleEffectTypeRegistry.SCYTHE_SLASH);
-
+        if (stack.getItem() instanceof ISpiritAffiliatedItem spiritAffiliatedItem) {
+            particle.setSpiritType(spiritAffiliatedItem);
+        }
         if (!canSweep) {
             SoundHelper.playSound(attacker, getScytheSound(false), 1, 0.75f);
             particle.setVertical().spawnForwardSlashingParticle(attacker);
@@ -66,14 +77,20 @@ public class MalumScytheItem extends ModCombatItem implements IMalumEventRespond
         });
     }
 
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment.equals(Enchantments.SWEEPING_EDGE)) {
+            return true;
+        }
+        return super.canApplyAtEnchantingTable(stack, enchantment);
+    }
+
     public SoundEvent getScytheSound(boolean canSweep) {
         return canSweep ? SoundRegistry.SCYTHE_SWEEP.get() : SoundRegistry.SCYTHE_CUT.get();
     }
 
     public static boolean canSweep(LivingEntity attacker) {
-        //TODO: convert this to a ToolAction, or something alike
         return !CurioHelper.hasCurioEquipped(attacker, ItemRegistry.NECKLACE_OF_THE_NARROW_EDGE.get()) &&
                 !CurioHelper.hasCurioEquipped(attacker, ItemRegistry.NECKLACE_OF_THE_HIDDEN_BLADE.get());
     }
-
 }

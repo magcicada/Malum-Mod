@@ -6,7 +6,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 
 public class SpiritPlunderEnchantment extends Enchantment {
     public SpiritPlunderEnchantment() {
-        super(Rarity.COMMON, EnchantmentRegistry.SOUL_HUNTER_WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+        super(Rarity.COMMON, EnchantmentRegistry.SOUL_SHATTER_CAPABLE_WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     }
 
     @Override
