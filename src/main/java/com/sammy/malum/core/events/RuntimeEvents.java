@@ -14,7 +14,6 @@ import com.sammy.malum.common.item.curiosities.curios.sets.misc.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.prospector.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.rotten.*;
 import com.sammy.malum.common.item.curiosities.curios.sets.weeping.*;
-import com.sammy.malum.common.item.curiosities.weapons.scythe.*;
 import com.sammy.malum.compability.tetra.*;
 import com.sammy.malum.core.handlers.*;
 import com.sammy.malum.core.listeners.*;
@@ -139,7 +138,7 @@ public class RuntimeEvents {
     @SubscribeEvent
     public static void addItemAttributes(ItemAttributeModifierEvent event) {
         HauntedEnchantment.addMagicDamage(event);
-        WindedEnchantment.addAttackSpeed(event);
+        AnimatedEnchantment.addAttackSpeed(event);
     }
 
     @SubscribeEvent

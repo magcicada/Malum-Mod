@@ -3,6 +3,7 @@ package com.sammy.malum.data.item;
 import com.sammy.malum.*;
 import com.sammy.malum.common.item.curiosities.curios.*;
 import com.sammy.malum.common.item.impetus.*;
+import com.sammy.malum.data.recipe.crafting.*;
 import com.sammy.malum.registry.common.block.*;
 import com.sammy.malum.registry.common.item.*;
 import net.minecraft.core.*;
@@ -38,6 +39,7 @@ public class MalumItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        MalumWoodSetRecipes.addTags(this);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
@@ -78,42 +80,6 @@ public class MalumItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.PROSPECTORS_TREASURE)
                 .addTags(Tags.Items.ORES, Tags.Items.STORAGE_BLOCKS, Tags.Items.INGOTS, Tags.Items.NUGGETS, Tags.Items.GEMS, Tags.Items.RAW_MATERIALS, ItemTags.COALS, ItemTagRegistry.METAL_NODES)
                 .addOptional(new ResourceLocation("tetra", "geode"));
-
-        tag(ItemTagRegistry.RUNEWOOD_LOGS).add(RUNEWOOD_LOG.get(), STRIPPED_RUNEWOOD_LOG.get(), RUNEWOOD.get(), STRIPPED_RUNEWOOD.get(), EXPOSED_RUNEWOOD_LOG.get(), REVEALED_RUNEWOOD_LOG.get());
-        tag(ItemTagRegistry.RUNEWOOD_BOARD_INGREDIENT).add(RUNEWOOD_LOG.get(), RUNEWOOD.get());
-        tag(ItemTagRegistry.RUNEWOOD_PLANKS).add(
-                RUNEWOOD_BOARDS.get(), VERTICAL_RUNEWOOD_BOARDS.get(),
-                RUNEWOOD_PLANKS.get(), RUSTIC_RUNEWOOD_PLANKS.get(), VERTICAL_RUNEWOOD_PLANKS.get(),
-                VERTICAL_RUSTIC_RUNEWOOD_PLANKS.get(), RUNEWOOD_TILES.get(), RUSTIC_RUNEWOOD_TILES.get()
-        );
-        tag(ItemTagRegistry.RUNEWOOD_SLABS).add(
-                RUNEWOOD_BOARDS_SLAB.get(), VERTICAL_RUNEWOOD_BOARDS_SLAB.get(),
-                RUNEWOOD_PLANKS_SLAB.get(), RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), VERTICAL_RUNEWOOD_PLANKS_SLAB.get(),
-                VERTICAL_RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), RUNEWOOD_TILES_SLAB.get(), RUSTIC_RUNEWOOD_TILES_SLAB.get()
-        );
-        tag(ItemTagRegistry.RUNEWOOD_STAIRS).add(
-                RUNEWOOD_BOARDS_STAIRS.get(), VERTICAL_RUNEWOOD_BOARDS_STAIRS.get(),
-                RUNEWOOD_PLANKS_STAIRS.get(), RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), VERTICAL_RUNEWOOD_PLANKS_STAIRS.get(),
-                VERTICAL_RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), RUNEWOOD_TILES_STAIRS.get(), RUSTIC_RUNEWOOD_TILES_STAIRS.get()
-        );
-
-        tag(ItemTagRegistry.SOULWOOD_LOGS).add(SOULWOOD_LOG.get(), STRIPPED_SOULWOOD_LOG.get(), SOULWOOD.get(), STRIPPED_SOULWOOD.get(), EXPOSED_SOULWOOD_LOG.get(), REVEALED_SOULWOOD_LOG.get(), BLIGHTED_SOULWOOD.get());
-        tag(ItemTagRegistry.SOULWOOD_BOARD_INGREDIENT).add(SOULWOOD_LOG.get(), SOULWOOD.get());
-        tag(ItemTagRegistry.SOULWOOD_PLANKS).add(
-                SOULWOOD_BOARDS.get(), VERTICAL_SOULWOOD_BOARDS.get(),
-                SOULWOOD_PLANKS.get(), RUSTIC_SOULWOOD_PLANKS.get(), VERTICAL_SOULWOOD_PLANKS.get(),
-                VERTICAL_RUSTIC_SOULWOOD_PLANKS.get(), SOULWOOD_TILES.get(), RUSTIC_SOULWOOD_TILES.get()
-        );
-        tag(ItemTagRegistry.SOULWOOD_SLABS).add(
-                SOULWOOD_BOARDS_SLAB.get(), VERTICAL_SOULWOOD_BOARDS_SLAB.get(),
-                SOULWOOD_PLANKS_SLAB.get(), RUSTIC_SOULWOOD_PLANKS_SLAB.get(), VERTICAL_SOULWOOD_PLANKS_SLAB.get(),
-                VERTICAL_RUSTIC_SOULWOOD_PLANKS_SLAB.get(), SOULWOOD_TILES_SLAB.get(), RUSTIC_SOULWOOD_TILES_SLAB.get()
-        );
-        tag(ItemTagRegistry.SOULWOOD_STAIRS).add(
-                SOULWOOD_BOARDS_STAIRS.get(), VERTICAL_SOULWOOD_BOARDS_STAIRS.get(),
-                SOULWOOD_PLANKS_STAIRS.get(), RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), VERTICAL_SOULWOOD_PLANKS_STAIRS.get(),
-                VERTICAL_RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), SOULWOOD_TILES_STAIRS.get(), RUSTIC_SOULWOOD_TILES_STAIRS.get()
-        );
 
         safeCopy(BlockTagRegistry.TAINTED_ROCK, ItemTagRegistry.TAINTED_ROCK);
         safeCopy(BlockTagRegistry.TAINTED_BLOCKS, ItemTagRegistry.TAINTED_BLOCKS);
@@ -229,6 +195,11 @@ public class MalumItemTags extends ItemTagsProvider {
             }
         }
         tag(ItemTagRegistry.CHARM).add(TOPHAT.get(), TOKEN_OF_GRATITUDE.get());
+    }
+
+    @Override
+    public IntrinsicTagAppender<Item> tag(TagKey<Item> pTag) {
+        return super.tag(pTag);
     }
 
     public void safeCopy(TagKey<Block> blockTag, TagKey<Item> itemTag) {

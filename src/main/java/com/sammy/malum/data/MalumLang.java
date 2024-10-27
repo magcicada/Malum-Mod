@@ -487,9 +487,9 @@ public class MalumLang extends LanguageProvider {
         addHeadline("scythes.enchanting.haunted", "Haunted");
         addPages("scythes.enchanting.haunted",
                 "Soulstone interacts with souls, obviously. The crudest and simplest use is blunt force, shattering a soul like a pane of glass. If I condense the arcane power of the stone, it would therefore hit and shatter harder, perhaps even damaging the body with the backlash.");
-        addHeadline("scythes.enchanting.winded", "Winded");
-        addPages("scythes.enchanting.winded",
-                "If power can be concentrated, it can be diffused. Interestingly, by diffusing the power that would be drawn together for Haunted into the rest of the scythe, the entire weapon gains a conceptual “lightness”, making its swings lighter and faster.");
+        addHeadline("scythes.enchanting.animated", "Animated");
+        addPages("scythes.enchanting.animated",
+                "If power can be concentrated, it can be diffused. Interestingly, by diffusing the power that would be drawn together for Haunted into the rest of the scythe, the entire weapon gains a conceptual \"lightness\", making its swings lighter and faster.");
         addHeadline("scythes.enchanting.rebound", "Rebound");
         addPages("scythes.enchanting.rebound",
                 "A scythe reaps. That is its purpose, and that can be harnessed. Should a reaper need my hand? By harnessing the purpose of the blade as a weapon, I can let it act on its own to some extent, as if it were a boomerang. The stronger the enchantment, the sooner it’s ready to throw again.");
@@ -1126,7 +1126,7 @@ public class MalumLang extends LanguageProvider {
 
         addTetraImprovement("malum.soul_strike", "Soul Strike", "The item's material allows it to strike the soul.");
 
-        addEnchantmentDescription(EnchantmentRegistry.WINDED, "Improves the Scythe's attack rate.");
+        addEnchantmentDescription(EnchantmentRegistry.ANIMATED, "Improves the Scythe's attack rate.");
         addEnchantmentDescription(EnchantmentRegistry.REBOUND, "Allows the Scythe to be thrown much like a boomerang when used.");
         addEnchantmentDescription(EnchantmentRegistry.ASCENSION, "Enables the Scythe to propel the player upwards, pushing away nearby enemies when used.");
         addEnchantmentDescription(EnchantmentRegistry.REPLENISHING, "Reduces the Staff's ranged attack cooldown when dealing melee damage.");

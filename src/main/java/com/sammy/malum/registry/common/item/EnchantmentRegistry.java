@@ -4,7 +4,6 @@ import com.sammy.malum.MalumMod;
 import com.sammy.malum.common.enchantment.*;
 import com.sammy.malum.common.enchantment.scythe.*;
 import com.sammy.malum.common.enchantment.staff.*;
-import com.sammy.malum.config.CommonConfig;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -24,7 +23,7 @@ public class EnchantmentRegistry {
     public static final EnchantmentCategory MAGIC_CAPABLE_WEAPON = create("magic_capable_weapon", i -> i.getDefaultInstance().is(ItemTagRegistry.MAGIC_CAPABLE_WEAPON));
 
     //Scythe
-    public static final RegistryObject<Enchantment> WINDED = ENCHANTMENTS.register("winded", WindedEnchantment::new);
+    public static final RegistryObject<Enchantment> ANIMATED = ENCHANTMENTS.register("animated", AnimatedEnchantment::new);
     public static final RegistryObject<Enchantment> REBOUND = ENCHANTMENTS.register("rebound", ReboundEnchantment::new);
     public static final RegistryObject<Enchantment> ASCENSION = ENCHANTMENTS.register("ascension", AscensionEnchantment::new);
 
