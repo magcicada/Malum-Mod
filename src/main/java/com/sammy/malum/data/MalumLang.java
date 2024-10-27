@@ -45,23 +45,23 @@ public class MalumLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
-        Set<RegistryObject<Item>> items = new HashSet<>(ITEMS.getEntries());
-        Set<RegistryObject<SoundEvent>> sounds = new HashSet<>(SOUNDS.getEntries());
-        Set<RegistryObject<Enchantment>> enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
-        Set<RegistryObject<MobEffect>> effects = new HashSet<>(EFFECTS.getEntries());
-        Set<RegistryObject<Attribute>> attributes = new HashSet<>(ATTRIBUTES.getEntries());
-        Set<RegistryObject<EntityType<?>>> entities = new HashSet<>(ENTITY_TYPES.getEntries());
-        List<MalumSpiritType> spirits = new ArrayList<>(SpiritTypeRegistry.SPIRITS.values());
+        var blocks = new HashSet<>(BLOCKS.getEntries());
+        var items = new HashSet<>(ITEMS.getEntries());
+        var sounds = new HashSet<>(SOUNDS.getEntries());
+        var enchantments = new HashSet<>(ENCHANTMENTS.getEntries());
+        var effects = new HashSet<>(EFFECTS.getEntries());
+        var attributes = new HashSet<>(ATTRIBUTES.getEntries());
+        var entities = new HashSet<>(ENTITY_TYPES.getEntries());
+        var spirits = new ArrayList<>(SpiritTypeRegistry.SPIRITS.values());
+        var crucibleTuningTypes = CrucibleTuning.CrucibleAttributeType.values();
 
-        add(DataHelper.take(blocks, BlockRegistry.PRIMORDIAL_SOUP).get(), "The Weeping Well");
-        add(DataHelper.take(blocks, BlockRegistry.VOID_CONDUIT).get(), "The Weeping Well");
+        add("item.malum.music_disc_arcane_elegy.desc", "Kultik - Arcane Elegy");
+        add("item.malum.music_disc_aesthetica.desc", "Kultik - Aesthetica");
 
         DataHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         DataHelper.takeAll(blocks, i -> i.get() instanceof EtherWallTorchBlock);
         DataHelper.takeAll(blocks, i -> i.get() instanceof WallSignBlock);
-        blocks.forEach(b ->
-        {
+        blocks.forEach(b -> {
             String name = b.get().getDescriptionId().replaceFirst("block\\.malum\\.", "");
             name = makeProper(DataHelper.toTitleCase(correctItemName(name), "_"));
             add(b.get().getDescriptionId(), name);
@@ -72,16 +72,11 @@ public class MalumLang extends LanguageProvider {
             add("item.malum." + filled, makeProper(DataHelper.toTitleCase(filled, "_")));
         });
         DataHelper.takeAll(items, i -> i.get() instanceof BlockItem && !(i.get() instanceof ItemNameBlockItem));
-        items.forEach(i ->
-        {
+        items.forEach(i -> {
             String name = i.get().getDescriptionId().replaceFirst("item\\.malum\\.", "");
             name = makeProper(DataHelper.toTitleCase(correctItemName(name), "_"));
             add(i.get().getDescriptionId(), name);
         });
-        add("item.malum.music_disc_arcane_elegy.desc", "Kultik - Arcane Elegy");
-        add("item.malum.music_disc_aesthetica.desc", "Kultik - Aesthetica");
-
-
         sounds.forEach(s -> {
             String name = correctSoundName(s.getId().getPath()).replaceAll("_", " ");
             name = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -110,7 +105,7 @@ public class MalumLang extends LanguageProvider {
 
         spirits.forEach(s -> add(s.getSpiritDescription(), DataHelper.toTitleCase(s.identifier + "_spirit", "_")));
 
-        for (CrucibleTuning.CrucibleAttributeType value : CrucibleTuning.CrucibleAttributeType.values()) {
+        for (CrucibleTuning.CrucibleAttributeType value : crucibleTuningTypes) {
             if (value.equals(CrucibleTuning.CrucibleAttributeType.NONE)) {
                 continue;
             }
@@ -118,6 +113,10 @@ public class MalumLang extends LanguageProvider {
             String name = DataHelper.toTitleCase(value.toString().toLowerCase(Locale.ROOT), "_");
             add(translation, name);
         }
+
+        add(DataHelper.take(blocks, BlockRegistry.PRIMORDIAL_SOUP).get(), "The Weeping Well");
+        add(DataHelper.take(blocks, BlockRegistry.VOID_CONDUIT).get(), "The Weeping Well");
+
         add("malum.gui.crucible.attribute.weakest_boost", "Weakest Boost");
         add("malum.gui.crucible.attribute.tuning_potency", "Tuning Potency");
 

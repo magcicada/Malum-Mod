@@ -14,7 +14,6 @@ import java.util.function.*;
 
 import static com.sammy.malum.MalumMod.*;
 import static com.sammy.malum.data.recipe.MalumVanillaRecipes.*;
-import static com.sammy.malum.registry.common.item.ItemRegistry.*;
 import static net.minecraft.data.recipes.RecipeBuilder.*;
 import static net.minecraft.data.recipes.ShapedRecipeBuilder.*;
 import static net.minecraft.data.recipes.ShapelessRecipeBuilder.*;
@@ -86,25 +85,27 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
     protected static void addTags(MalumItemTags provider, MalumDatagenWoodSet woodSet) {
         provider.tag(woodSet.logTag).add(
                 woodSet.log, woodSet.strippedLog, woodSet.wood, woodSet.strippedWood, woodSet.sapFilledLog, woodSet.strippedSapFilledLog);
-        provider.tag(woodSet.logWithBarkTag).add(woodSet.log, woodSet.wood);
-        provider.tag(ItemTagRegistry.RUNEWOOD_PLANKS).add(
+        provider.tag(woodSet.boardIngredientTag).add(woodSet.log, woodSet.wood);
+        provider.tag(woodSet.planksTag).add(
                 woodSet.boards, woodSet.verticalBoards,
                 woodSet.planks, woodSet.verticalPlanks,
                 woodSet.rusticPlanks, woodSet.verticalRusticPlanks,
                 woodSet.tiles, woodSet.rusticTiles
         );
-        provider.tag(ItemTagRegistry.RUNEWOOD_STAIRS).add(
+        provider.tag(woodSet.stairsTag).add(
                 woodSet.boardsStairs, woodSet.verticalBoardsStairs,
                 woodSet.planksStairs, woodSet.verticalPlanksStairs,
                 woodSet.rusticPlanksStairs, woodSet.verticalRusticPlanksStairs,
                 woodSet.tilesStairs, woodSet.rusticTilesStairs
         );
-        provider.tag(ItemTagRegistry.RUNEWOOD_SLABS).add(
+        provider.tag(woodSet.slabTag).add(
                 woodSet.boardsSlab, woodSet.verticalBoardsSlab,
                 woodSet.planksSlab, woodSet.verticalPlanksSlab,
                 woodSet.rusticPlanksSlab, woodSet.verticalRusticPlanksSlab,
                 woodSet.tilesSlab, woodSet.rusticTilesSlab
         );
+
+        provider.safeCopy();
     }
 
     protected static void buildRecipes(Consumer<FinishedRecipe> consumer, MalumDatagenWoodSet woodSet) {
@@ -114,7 +115,7 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
         rusticExchange(consumer, woodSet.verticalRusticPlanks, woodSet.verticalPlanks);
         rusticExchange(consumer, woodSet.rusticTiles, woodSet.tiles);
 
-        shapedBoards(consumer, woodSet.boards, woodSet.logWithBarkTag);
+        shapedBoards(consumer, woodSet.boards, woodSet.boardIngredientTag);
 
         shapedSlab(consumer, woodSet.boardsSlab, woodSet.boards);
         shapedStairs(consumer, woodSet.boardsStairs, woodSet.boards);
@@ -396,7 +397,7 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
 
             Item itemStand, Item itemPedestal,
 
-            TagKey<Item> logTag, TagKey<Item> logWithBarkTag, TagKey<Item> planksTag, TagKey<Item> stairsTag, TagKey<Item> slabTag,
+            TagKey<Item> logTag, TagKey<Item> boardIngredientTag, TagKey<Item> planksTag, TagKey<Item> stairsTag, TagKey<Item> slabTag,
 
             Item boat
     ) { }

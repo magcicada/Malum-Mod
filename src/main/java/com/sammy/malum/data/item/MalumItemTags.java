@@ -202,6 +202,10 @@ public class MalumItemTags extends ItemTagsProvider {
         return super.tag(pTag);
     }
 
+    public void safeCopy(TagKey<Item> itemTag) {
+        safeCopy(BlockRegistry.BLOCKS, TagKey.create(ForgeRegistries.BLOCKS.getRegistryKey(), itemTag.location()), itemTag);
+    }
+
     public void safeCopy(TagKey<Block> blockTag, TagKey<Item> itemTag) {
         safeCopy(BlockRegistry.BLOCKS, blockTag, itemTag);
     }
