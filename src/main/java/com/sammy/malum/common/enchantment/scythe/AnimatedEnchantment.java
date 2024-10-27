@@ -8,11 +8,11 @@ import net.minecraftforge.event.*;
 
 import java.util.*;
 
-public class WindedEnchantment extends Enchantment {
+public class AnimatedEnchantment extends Enchantment {
 
     private static final UUID ATTACK_SPEED_MODIFIER = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
 
-    public WindedEnchantment() {
+    public AnimatedEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentRegistry.SCYTHE_ONLY, new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
     }
 
@@ -24,7 +24,7 @@ public class WindedEnchantment extends Enchantment {
     public static void addAttackSpeed(ItemAttributeModifierEvent event) {
         if (event.getSlotType().equals(EquipmentSlot.MAINHAND)) {
             var itemStack = event.getItemStack();
-            int enchantmentLevel = itemStack.getEnchantmentLevel(EnchantmentRegistry.WINDED.get());
+            int enchantmentLevel = itemStack.getEnchantmentLevel(EnchantmentRegistry.ANIMATED.get());
             if (enchantmentLevel > 0) {
                 var attackSpeed = Attributes.ATTACK_SPEED;
                 if (event.getOriginalModifiers().containsKey(attackSpeed)) {

@@ -495,7 +495,7 @@ public class ArcanaCodexHelper {
     private static void renderRawText(GuiGraphics guiGraphics, String text, int x, int y, float glow) {
         Font font = Minecraft.getInstance().font;
         if (BOOK_THEME.getConfigValue().equals(BookTheme.EASY_READING)) {
-            guiGraphics.drawString(font, text, x, y, 0);
+            guiGraphics.drawString(font, text, x, y, 0, false);
             return;
         }
 

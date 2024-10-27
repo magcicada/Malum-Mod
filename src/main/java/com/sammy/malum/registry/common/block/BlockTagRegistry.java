@@ -3,6 +3,7 @@ package com.sammy.malum.registry.common.block;
 import com.sammy.malum.*;
 import net.minecraft.resources.*;
 import net.minecraft.tags.*;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.registries.*;
 
@@ -12,7 +13,16 @@ public class BlockTagRegistry {
     public static final TagKey<Block> BLIGHTED_PLANTS = malumTag("blighted_plants");
 
     public static final TagKey<Block> RUNEWOOD_LOGS = malumTag("runewood_logs");
+    public static final TagKey<Block> RUNEWOOD_PLANKS = malumTag("runewood_planks");
+    public static final TagKey<Block> RUNEWOOD_STAIRS = malumTag("runewood_stairs");
+    public static final TagKey<Block> RUNEWOOD_SLABS = malumTag("runewood_slabs");
+
     public static final TagKey<Block> SOULWOOD_LOGS = malumTag("soulwood_logs");
+    public static final TagKey<Block> SOULWOOD_PLANKS = malumTag("soulwood_planks");
+    public static final TagKey<Block> SOULWOOD_STAIRS = malumTag("soulwood_stairs");
+    public static final TagKey<Block> SOULWOOD_SLABS = malumTag("soulwood_slabs");
+
+
 
     public static final TagKey<Block> TAINTED_ROCK = malumTag("tainted_rock");
     public static final TagKey<Block> TAINTED_BLOCKS = malumTag("tainted_rock_blocks");

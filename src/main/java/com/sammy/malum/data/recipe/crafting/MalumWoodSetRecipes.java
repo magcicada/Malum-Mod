@@ -1,5 +1,6 @@
 package com.sammy.malum.data.recipe.crafting;
 
+import com.sammy.malum.data.item.*;
 import com.sammy.malum.registry.common.item.*;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.*;
@@ -19,58 +20,92 @@ import static net.minecraft.data.recipes.ShapelessRecipeBuilder.*;
 
 public class MalumWoodSetRecipes implements IConditionBuilder {
 
-    public static void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        buildRecipes(consumer, new MalumDatagenWoodSet(
-                "runewood",
-                ItemRegistry.RUNEWOOD_LOG.get(), ItemRegistry.RUNEWOOD.get(),
-                ItemRegistry.STRIPPED_RUNEWOOD_LOG.get(), ItemRegistry.STRIPPED_RUNEWOOD.get(),
-                ItemRegistry.REVEALED_RUNEWOOD_LOG.get(), ItemRegistry.EXPOSED_RUNEWOOD_LOG.get(),
-                ItemRegistry.RUNEWOOD_BOARDS.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS.get(),
-                ItemRegistry.RUNEWOOD_BOARDS_SLAB.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS_SLAB.get(),
-                ItemRegistry.RUNEWOOD_BOARDS_STAIRS.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS_STAIRS.get(),
-                ItemRegistry.RUNEWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS.get(), ItemRegistry.RUNEWOOD_TILES.get(),
-                ItemRegistry.RUSTIC_RUNEWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES.get(),
-                ItemRegistry.RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.RUNEWOOD_TILES_SLAB.get(),
-                ItemRegistry.RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES_SLAB.get(),
-                ItemRegistry.RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUNEWOOD_TILES_STAIRS.get(),
-                ItemRegistry.RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES_STAIRS.get(),
-                ItemRegistry.RUNEWOOD_PANEL.get(), ItemRegistry.CUT_RUNEWOOD_PLANKS.get(), ItemRegistry.RUNEWOOD_BEAM.get(),
-                ItemRegistry.RUNEWOOD_BUTTON.get(), ItemRegistry.RUNEWOOD_PRESSURE_PLATE.get(),
-                ItemRegistry.SOLID_RUNEWOOD_TRAPDOOR.get(), ItemRegistry.RUNEWOOD_TRAPDOOR.get(),
-                ItemRegistry.RUNEWOOD_FENCE.get(), ItemRegistry.RUNEWOOD_FENCE_GATE.get(),
-                ItemRegistry.RUNEWOOD_BOARDS_WALL.get(),
-                ItemRegistry.RUNEWOOD_DOOR.get(),
-                ItemRegistry.RUNEWOOD_SIGN.get(), ItemRegistry.RUNEWOOD_SIGN.get(),
-                ItemRegistry.RUNEWOOD_ITEM_STAND.get(), ItemRegistry.RUNEWOOD_ITEM_PEDESTAL.get(),
-                ItemTagRegistry.RUNEWOOD_LOGS, ItemTagRegistry.RUNEWOOD_BOARD_INGREDIENT, ItemTagRegistry.RUNEWOOD_PLANKS, ItemTagRegistry.RUNEWOOD_SLABS,
-                ItemRegistry.RUNEWOOD_BOAT.get()
-        ));
+    private static final MalumDatagenWoodSet RUNEWOOD = new MalumDatagenWoodSet(
+            "runewood",
+            ItemRegistry.RUNEWOOD_LOG.get(), ItemRegistry.RUNEWOOD.get(),
+            ItemRegistry.STRIPPED_RUNEWOOD_LOG.get(), ItemRegistry.STRIPPED_RUNEWOOD.get(),
+            ItemRegistry.REVEALED_RUNEWOOD_LOG.get(), ItemRegistry.EXPOSED_RUNEWOOD_LOG.get(),
+            ItemRegistry.RUNEWOOD_BOARDS.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS.get(),
+            ItemRegistry.RUNEWOOD_BOARDS_SLAB.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS_SLAB.get(),
+            ItemRegistry.RUNEWOOD_BOARDS_STAIRS.get(), ItemRegistry.VERTICAL_RUNEWOOD_BOARDS_STAIRS.get(),
+            ItemRegistry.RUNEWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS.get(), ItemRegistry.RUNEWOOD_TILES.get(),
+            ItemRegistry.RUSTIC_RUNEWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES.get(),
+            ItemRegistry.RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.RUNEWOOD_TILES_SLAB.get(),
+            ItemRegistry.RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS_SLAB.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES_SLAB.get(),
+            ItemRegistry.RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUNEWOOD_TILES_STAIRS.get(),
+            ItemRegistry.RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUSTIC_RUNEWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUSTIC_RUNEWOOD_TILES_STAIRS.get(),
+            ItemRegistry.RUNEWOOD_PANEL.get(), ItemRegistry.CUT_RUNEWOOD_PLANKS.get(), ItemRegistry.RUNEWOOD_BEAM.get(),
+            ItemRegistry.RUNEWOOD_BUTTON.get(), ItemRegistry.RUNEWOOD_PRESSURE_PLATE.get(),
+            ItemRegistry.SOLID_RUNEWOOD_TRAPDOOR.get(), ItemRegistry.RUNEWOOD_TRAPDOOR.get(),
+            ItemRegistry.RUNEWOOD_FENCE.get(), ItemRegistry.RUNEWOOD_FENCE_GATE.get(),
+            ItemRegistry.RUNEWOOD_BOARDS_WALL.get(),
+            ItemRegistry.RUNEWOOD_DOOR.get(),
+            ItemRegistry.RUNEWOOD_SIGN.get(), ItemRegistry.RUNEWOOD_SIGN.get(),
+            ItemRegistry.RUNEWOOD_ITEM_STAND.get(), ItemRegistry.RUNEWOOD_ITEM_PEDESTAL.get(),
+            ItemTagRegistry.RUNEWOOD_LOGS, ItemTagRegistry.RUNEWOOD_BOARD_INGREDIENT, ItemTagRegistry.RUNEWOOD_PLANKS, ItemTagRegistry.RUNEWOOD_STAIRS, ItemTagRegistry.RUNEWOOD_SLABS,
+            ItemRegistry.RUNEWOOD_BOAT.get()
+    );
 
-        buildRecipes(consumer, new MalumDatagenWoodSet(
-                "soulwood",
-                ItemRegistry.SOULWOOD_LOG.get(), ItemRegistry.SOULWOOD.get(),
-                ItemRegistry.STRIPPED_SOULWOOD_LOG.get(), ItemRegistry.STRIPPED_SOULWOOD.get(),
-                ItemRegistry.REVEALED_SOULWOOD_LOG.get(), ItemRegistry.EXPOSED_SOULWOOD_LOG.get(),
-                ItemRegistry.SOULWOOD_BOARDS.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS.get(),
-                ItemRegistry.SOULWOOD_BOARDS_SLAB.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS_SLAB.get(),
-                ItemRegistry.SOULWOOD_BOARDS_STAIRS.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS_STAIRS.get(),
-                ItemRegistry.SOULWOOD_PLANKS.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS.get(), ItemRegistry.SOULWOOD_TILES.get(),
-                ItemRegistry.RUSTIC_SOULWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES.get(),
-                ItemRegistry.SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.SOULWOOD_TILES_SLAB.get(),
-                ItemRegistry.RUSTIC_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES_SLAB.get(),
-                ItemRegistry.SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.SOULWOOD_TILES_STAIRS.get(),
-                ItemRegistry.RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES_STAIRS.get(),
-                ItemRegistry.SOULWOOD_PANEL.get(), ItemRegistry.CUT_SOULWOOD_PLANKS.get(), ItemRegistry.SOULWOOD_BEAM.get(),
-                ItemRegistry.SOULWOOD_BUTTON.get(), ItemRegistry.SOULWOOD_PRESSURE_PLATE.get(),
-                ItemRegistry.SOLID_SOULWOOD_TRAPDOOR.get(), ItemRegistry.SOULWOOD_TRAPDOOR.get(),
-                ItemRegistry.SOULWOOD_FENCE.get(), ItemRegistry.SOULWOOD_FENCE_GATE.get(),
-                ItemRegistry.SOULWOOD_BOARDS_WALL.get(),
-                ItemRegistry.SOULWOOD_DOOR.get(),
-                ItemRegistry.SOULWOOD_SIGN.get(), ItemRegistry.SOULWOOD_SIGN.get(),
-                ItemRegistry.SOULWOOD_ITEM_STAND.get(), ItemRegistry.SOULWOOD_ITEM_PEDESTAL.get(),
-                ItemTagRegistry.SOULWOOD_LOGS, ItemTagRegistry.SOULWOOD_BOARD_INGREDIENT, ItemTagRegistry.SOULWOOD_PLANKS, ItemTagRegistry.SOULWOOD_SLABS,
-                ItemRegistry.SOULWOOD_BOAT.get()
-        ));
+    private static final MalumDatagenWoodSet SOULWOOD = new MalumDatagenWoodSet(
+            "soulwood",
+            ItemRegistry.SOULWOOD_LOG.get(), ItemRegistry.SOULWOOD.get(),
+            ItemRegistry.STRIPPED_SOULWOOD_LOG.get(), ItemRegistry.STRIPPED_SOULWOOD.get(),
+            ItemRegistry.REVEALED_SOULWOOD_LOG.get(), ItemRegistry.EXPOSED_SOULWOOD_LOG.get(),
+            ItemRegistry.SOULWOOD_BOARDS.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS.get(),
+            ItemRegistry.SOULWOOD_BOARDS_SLAB.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS_SLAB.get(),
+            ItemRegistry.SOULWOOD_BOARDS_STAIRS.get(), ItemRegistry.VERTICAL_SOULWOOD_BOARDS_STAIRS.get(),
+            ItemRegistry.SOULWOOD_PLANKS.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS.get(), ItemRegistry.SOULWOOD_TILES.get(),
+            ItemRegistry.RUSTIC_SOULWOOD_PLANKS.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES.get(),
+            ItemRegistry.SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.SOULWOOD_TILES_SLAB.get(),
+            ItemRegistry.RUSTIC_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS_SLAB.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES_SLAB.get(),
+            ItemRegistry.SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.SOULWOOD_TILES_STAIRS.get(),
+            ItemRegistry.RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.VERTICAL_RUSTIC_SOULWOOD_PLANKS_STAIRS.get(), ItemRegistry.RUSTIC_SOULWOOD_TILES_STAIRS.get(),
+            ItemRegistry.SOULWOOD_PANEL.get(), ItemRegistry.CUT_SOULWOOD_PLANKS.get(), ItemRegistry.SOULWOOD_BEAM.get(),
+            ItemRegistry.SOULWOOD_BUTTON.get(), ItemRegistry.SOULWOOD_PRESSURE_PLATE.get(),
+            ItemRegistry.SOLID_SOULWOOD_TRAPDOOR.get(), ItemRegistry.SOULWOOD_TRAPDOOR.get(),
+            ItemRegistry.SOULWOOD_FENCE.get(), ItemRegistry.SOULWOOD_FENCE_GATE.get(),
+            ItemRegistry.SOULWOOD_BOARDS_WALL.get(),
+            ItemRegistry.SOULWOOD_DOOR.get(),
+            ItemRegistry.SOULWOOD_SIGN.get(), ItemRegistry.SOULWOOD_SIGN.get(),
+            ItemRegistry.SOULWOOD_ITEM_STAND.get(), ItemRegistry.SOULWOOD_ITEM_PEDESTAL.get(),
+            ItemTagRegistry.SOULWOOD_LOGS, ItemTagRegistry.SOULWOOD_BOARD_INGREDIENT, ItemTagRegistry.SOULWOOD_PLANKS, ItemTagRegistry.SOULWOOD_STAIRS, ItemTagRegistry.SOULWOOD_SLABS,
+            ItemRegistry.SOULWOOD_BOAT.get()
+    );
+
+    public static void addTags(MalumItemTags provider) {
+        addTags(provider, RUNEWOOD);
+        addTags(provider, SOULWOOD);
+    }
+
+    public static void buildRecipes(Consumer<FinishedRecipe> consumer) {
+        buildRecipes(consumer, RUNEWOOD);
+        buildRecipes(consumer, SOULWOOD);
+    }
+
+    protected static void addTags(MalumItemTags provider, MalumDatagenWoodSet woodSet) {
+        provider.tag(woodSet.logTag).add(
+                woodSet.log, woodSet.strippedLog, woodSet.wood, woodSet.strippedWood, woodSet.sapFilledLog, woodSet.strippedSapFilledLog);
+        provider.tag(woodSet.boardIngredientTag).add(woodSet.log, woodSet.wood);
+        provider.tag(woodSet.planksTag).add(
+                woodSet.boards, woodSet.verticalBoards,
+                woodSet.planks, woodSet.verticalPlanks,
+                woodSet.rusticPlanks, woodSet.verticalRusticPlanks,
+                woodSet.tiles, woodSet.rusticTiles
+        );
+        provider.tag(woodSet.stairsTag).add(
+                woodSet.boardsStairs, woodSet.verticalBoardsStairs,
+                woodSet.planksStairs, woodSet.verticalPlanksStairs,
+                woodSet.rusticPlanksStairs, woodSet.verticalRusticPlanksStairs,
+                woodSet.tilesStairs, woodSet.rusticTilesStairs
+        );
+        provider.tag(woodSet.slabTag).add(
+                woodSet.boardsSlab, woodSet.verticalBoardsSlab,
+                woodSet.planksSlab, woodSet.verticalPlanksSlab,
+                woodSet.rusticPlanksSlab, woodSet.verticalRusticPlanksSlab,
+                woodSet.tilesSlab, woodSet.rusticTilesSlab
+        );
+
+        provider.safeCopy();
     }
 
     protected static void buildRecipes(Consumer<FinishedRecipe> consumer, MalumDatagenWoodSet woodSet) {
@@ -80,7 +115,7 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
         rusticExchange(consumer, woodSet.verticalRusticPlanks, woodSet.verticalPlanks);
         rusticExchange(consumer, woodSet.rusticTiles, woodSet.tiles);
 
-        shapedBoards(consumer, woodSet.boards, woodSet.logWithBarkTag);
+        shapedBoards(consumer, woodSet.boards, woodSet.boardIngredientTag);
 
         shapedSlab(consumer, woodSet.boardsSlab, woodSet.boards);
         shapedStairs(consumer, woodSet.boardsStairs, woodSet.boards);
@@ -362,7 +397,7 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
 
             Item itemStand, Item itemPedestal,
 
-            TagKey<Item> logTag, TagKey<Item> logWithBarkTag, TagKey<Item> planksTag, TagKey<Item> slabTag,
+            TagKey<Item> logTag, TagKey<Item> boardIngredientTag, TagKey<Item> planksTag, TagKey<Item> stairsTag, TagKey<Item> slabTag,
 
             Item boat
     ) { }

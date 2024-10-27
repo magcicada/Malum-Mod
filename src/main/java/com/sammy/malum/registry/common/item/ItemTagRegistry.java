@@ -18,25 +18,25 @@ public class ItemTagRegistry {
     public static final TagKey<Item> RUNEWOOD_BOARD_INGREDIENT = malumTag("runewood_board_ingredient");
     public static final TagKey<Item> RUNEWOOD_LOGS = malumTag("runewood_logs");
     public static final TagKey<Item> RUNEWOOD_PLANKS = malumTag("runewood_planks");
-    public static final TagKey<Item> RUNEWOOD_SLABS = malumTag("runewood_slabs");
     public static final TagKey<Item> RUNEWOOD_STAIRS = malumTag("runewood_stairs");
+    public static final TagKey<Item> RUNEWOOD_SLABS = malumTag("runewood_slabs");
 
     public static final TagKey<Item> SOULWOOD_BOARD_INGREDIENT = malumTag("soulwood_board_ingredient");
     public static final TagKey<Item> SOULWOOD_LOGS = malumTag("soulwood_logs");
     public static final TagKey<Item> SOULWOOD_PLANKS = malumTag("soulwood_planks");
-    public static final TagKey<Item> SOULWOOD_SLABS = malumTag("soulwood_slabs");
     public static final TagKey<Item> SOULWOOD_STAIRS = malumTag("soulwood_stairs");
+    public static final TagKey<Item> SOULWOOD_SLABS = malumTag("soulwood_slabs");
 
     public static final TagKey<Item> TAINTED_ROCK = malumTag("tainted_rock");
     public static final TagKey<Item> TAINTED_BLOCKS = malumTag("tainted_rock_blocks");
-    public static final TagKey<Item> TAINTED_SLABS = malumTag("tainted_rock_slabs");
     public static final TagKey<Item> TAINTED_STAIRS = malumTag("tainted_rock_stairs");
+    public static final TagKey<Item> TAINTED_SLABS = malumTag("tainted_rock_slabs");
     public static final TagKey<Item> TAINTED_WALLS = malumTag("tainted_rock_walls");
 
     public static final TagKey<Item> TWISTED_ROCK = malumTag("twisted_rock");
     public static final TagKey<Item> TWISTED_BLOCKS = malumTag("twisted_rock_blocks");
-    public static final TagKey<Item> TWISTED_SLABS = malumTag("twisted_rock_slabs");
     public static final TagKey<Item> TWISTED_STAIRS = malumTag("twisted_rock_stairs");
+    public static final TagKey<Item> TWISTED_SLABS = malumTag("twisted_rock_slabs");
     public static final TagKey<Item> TWISTED_WALLS = malumTag("twisted_rock_walls");
 
     public static final TagKey<Item> SAPBALLS = malumTag("sapballs");

@@ -3,12 +3,9 @@ package com.sammy.malum.common.enchantment;
 import com.sammy.malum.registry.common.item.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.*;
-import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraftforge.event.*;
 import team.lodestar.lodestone.registry.common.*;
-
-import java.util.*;
 
 public class HauntedEnchantment extends Enchantment {
     public HauntedEnchantment() {
@@ -17,7 +14,7 @@ public class HauntedEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(Enchantment pOther) {
-        return !pOther.equals(EnchantmentRegistry.WINDED.get()) && super.checkCompatibility(pOther);
+        return !pOther.equals(EnchantmentRegistry.ANIMATED.get()) && super.checkCompatibility(pOther);
     }
 
     public static void addMagicDamage(ItemAttributeModifierEvent event) {
