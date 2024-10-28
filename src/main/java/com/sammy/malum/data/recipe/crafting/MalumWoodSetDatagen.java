@@ -18,7 +18,7 @@ import static net.minecraft.data.recipes.RecipeBuilder.*;
 import static net.minecraft.data.recipes.ShapedRecipeBuilder.*;
 import static net.minecraft.data.recipes.ShapelessRecipeBuilder.*;
 
-public class MalumWoodSetRecipes implements IConditionBuilder {
+public class MalumWoodSetDatagen implements IConditionBuilder {
 
     private static final MalumDatagenWoodSet RUNEWOOD = new MalumDatagenWoodSet(
             "runewood",
@@ -84,7 +84,9 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
 
     protected static void addTags(MalumItemTags provider, MalumDatagenWoodSet woodSet) {
         provider.tag(woodSet.logTag).add(
-                woodSet.log, woodSet.strippedLog, woodSet.wood, woodSet.strippedWood, woodSet.sapFilledLog, woodSet.strippedSapFilledLog);
+                woodSet.log, woodSet.strippedLog,
+                woodSet.wood, woodSet.strippedWood,
+                woodSet.sapFilledLog, woodSet.strippedSapFilledLog);
         provider.tag(woodSet.boardIngredientTag).add(woodSet.log, woodSet.wood);
         provider.tag(woodSet.planksTag).add(
                 woodSet.boards, woodSet.verticalBoards,
@@ -105,7 +107,10 @@ public class MalumWoodSetRecipes implements IConditionBuilder {
                 woodSet.tilesSlab, woodSet.rusticTilesSlab
         );
 
-        provider.safeCopy();
+        provider.safeCopy(woodSet.logTag);
+        provider.safeCopy(woodSet.planksTag);
+        provider.safeCopy(woodSet.stairsTag);
+        provider.safeCopy(woodSet.slabTag);
     }
 
     protected static void buildRecipes(Consumer<FinishedRecipe> consumer, MalumDatagenWoodSet woodSet) {

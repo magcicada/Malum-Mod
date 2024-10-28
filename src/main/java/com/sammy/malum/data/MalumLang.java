@@ -58,6 +58,9 @@ public class MalumLang extends LanguageProvider {
         add("item.malum.music_disc_arcane_elegy.desc", "Kultik - Arcane Elegy");
         add("item.malum.music_disc_aesthetica.desc", "Kultik - Aesthetica");
 
+        add(DataHelper.take(blocks, BlockRegistry.PRIMORDIAL_SOUP).get(), "The Weeping Well");
+        add(DataHelper.take(blocks, BlockRegistry.VOID_CONDUIT).get(), "The Weeping Well");
+
         DataHelper.takeAll(blocks, i -> i.get() instanceof WallTorchBlock);
         DataHelper.takeAll(blocks, i -> i.get() instanceof EtherWallTorchBlock);
         DataHelper.takeAll(blocks, i -> i.get() instanceof WallSignBlock);
@@ -113,9 +116,6 @@ public class MalumLang extends LanguageProvider {
             String name = DataHelper.toTitleCase(value.toString().toLowerCase(Locale.ROOT), "_");
             add(translation, name);
         }
-
-        add(DataHelper.take(blocks, BlockRegistry.PRIMORDIAL_SOUP).get(), "The Weeping Well");
-        add(DataHelper.take(blocks, BlockRegistry.VOID_CONDUIT).get(), "The Weeping Well");
 
         add("malum.gui.crucible.attribute.weakest_boost", "Weakest Boost");
         add("malum.gui.crucible.attribute.tuning_potency", "Tuning Potency");
@@ -1062,6 +1062,44 @@ public class MalumLang extends LanguageProvider {
         addSimpleEntryHeader("belt_of_the_magebane", "Belt of the Magebane", "Newfound ruin");
         addPages("belt_of_the_magebane", "The Belt of the Magebane is a simple innovation, but a dangerously effective one. Normally, after being struck by any attack, soul ward will not recover until a long moment after. That moment of downtime has proven itself detrimental far too frequently. But that ends now.",
                 "While worn, the belt provides a substantial bonus to soul ward recovery rate, while also improving capacity slightly. Furthermore, the belt will absorb the arcane essence of any instance of magical damage that strikes its bearer, converting that repurposed energy into immediate recovery of soul ward.");
+
+        addSimpleEntryHeader("a_personal_note", "A Personal Note", "A page from another book");
+        addPages("a_personal_note",
+                "Within the book, you find a page written by someone other than the Author you are used to. It sticks out just barely from in between one of the chapters. The entries inside appear to be a show of gratitude of sorts, the names ring a bell.");
+
+        addSimpleEntryHeader("a_personal_note.commendations", "Malum; Commendations", "A Thank You Letter");
+        addHeadline("a_personal_note.commendations.wiresegal", "Wiresegal");
+        addPages("a_personal_note.commendations.wiresegal",
+                "I'm not quite sure how we met, can't remember really. At some point, they offered to help out with Malum- most notably with the Encyclopedia Arcana, but also with a decent few bug fixes and refactors of dated systems. A large majority of the Entries are written by them :3");
+        addHeadline("a_personal_note.commendations.alphalilly", "Alphalilly");
+        addPages("a_personal_note.commendations.alphalilly",
+                "I reached out to them after seeing their work for the Arcana project, the Malum' book background art was made by them per commission. They've done an incredible job with them and I'm very happy to have their work in game :3");
+        addHeadline("a_personal_note.commendations.pessi_mysterio", "Pessi Mysterio");
+        addPages("a_personal_note.commendations.pessi_mysterio",
+                "I remember going on quite a witch hunt to find them, scouring through the internet and asking a bunch of people. They worked on Sound Design for a few mods and so I reached out to them to commission some for Malum. The Spirit Altar, Crucible and Totems are some of their works for this project.");
+        addHeadline("a_personal_note.commendations.kultik", "Kultik");
+        addPages("a_personal_note.commendations.kultik",
+                "Once again, no idea how we got in touch, but they showed quite an interest in Malum and offered to have one of their tracks added to the mod as a music disc. They're responsible for the Aesthetica and Arcane Elegy Music Discs :3");
+        addHeadline("a_personal_note.commendations.coalition_of_magic", "Coalition of Magic");
+        addPages("a_personal_note.commendations.coalition_of_magic",
+                "The Coalition of Magic is a Supporter exclusive server organized by me and Joefoxe, without everyone's voices and support of the mod, it'd be difficult to find motivation to work as much as I can now. Thank you!");
+        addHeadline("a_personal_note.commendations.translation", "Translation");
+        addPages("a_personal_note.commendations.translation",
+                "There's this fella on github who very routinely pushes translations to the mod for the Chinese language, figured they deserve some thanks. They go by ChuijkYahus, so if you're reading this in Chinese it's thanks to them! If you plan to do a complete translation of Malum, let me know- I hope in the future this page can become a list.");
+
+        addSimpleEntryHeader("a_personal_note.inspirations", "Malum; Inspirations", "What brought me here");
+        addHeadline("a_personal_note.inspirations.thaumcraft", "Thaumcraft");
+        addPages("a_personal_note.inspirations.thaumcraft",
+                "By far the biggest inspiration for Malum, I enjoyed the mod immensely when I was first getting into modded minecraft. I only ever tried the 1.12 version though. The way the magic system is designed and the general sense of progression is something I love.");
+        addHeadline("a_personal_note.inspirations.astral_sorcery", "Astral Sorcery");
+        addPages("a_personal_note.inspirations.astral_sorcery",
+                "I love the mod's visual identity and mechanics, anytime it was in a pack I'd make sure to make the most of it. The Path of Exiles is a huge inspiration for some upcoming stuff I wanna add to Malum.");
+        addHeadline("a_personal_note.inspirations.eidolon", "Eidolon");
+        addPages("a_personal_note.inspirations.eidolon",
+                "Eidolon has such a charming atmosphere, when it released I got a little scared about how similar the mod was to my concept of what I want Malum to be, and it really pushed me to innovate. Additionally, the mod's author and I exchange a myriad of cat pictures, it is a charm.");
+        addHeadline("a_personal_note.inspirations.mystic_modding", "Mystic Modding' Mods");
+        addPages("a_personal_note.inspirations.mystic_modding",
+                "Embers and Roots were some of my favourite magic mods I've come across, I found their very approachable nature a really appealing thing for a mod to incorporate.");
 
         addSimpleEntryHeader("the_device", "The Device.", "microwave to recharge");
         addPage("the_device", "even works while bended");

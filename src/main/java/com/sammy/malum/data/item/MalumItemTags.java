@@ -39,7 +39,9 @@ public class MalumItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        MalumWoodSetRecipes.addTags(this);
+        MalumWoodSetDatagen.addTags(this);
+        MalumRockSetDatagen.addTags(this);
+
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
@@ -80,20 +82,6 @@ public class MalumItemTags extends ItemTagsProvider {
         tag(ItemTagRegistry.PROSPECTORS_TREASURE)
                 .addTags(Tags.Items.ORES, Tags.Items.STORAGE_BLOCKS, Tags.Items.INGOTS, Tags.Items.NUGGETS, Tags.Items.GEMS, Tags.Items.RAW_MATERIALS, ItemTags.COALS, ItemTagRegistry.METAL_NODES)
                 .addOptional(new ResourceLocation("tetra", "geode"));
-
-        safeCopy(BlockTagRegistry.TAINTED_ROCK, ItemTagRegistry.TAINTED_ROCK);
-        safeCopy(BlockTagRegistry.TAINTED_BLOCKS, ItemTagRegistry.TAINTED_BLOCKS);
-        safeCopy(BlockTagRegistry.TAINTED_SLABS, ItemTagRegistry.TAINTED_SLABS);
-        safeCopy(BlockTagRegistry.TAINTED_STAIRS, ItemTagRegistry.TAINTED_STAIRS);
-        safeCopy(BlockTagRegistry.TAINTED_WALLS, ItemTagRegistry.TAINTED_WALLS);
-        safeCopy(BlockTagRegistry.TAINTED_BLOCKS, ItemTagRegistry.TAINTED_BLOCKS);
-
-        safeCopy(BlockTagRegistry.TWISTED_ROCK, ItemTagRegistry.TWISTED_ROCK);
-        safeCopy(BlockTagRegistry.TWISTED_BLOCKS, ItemTagRegistry.TWISTED_BLOCKS);
-        safeCopy(BlockTagRegistry.TWISTED_SLABS, ItemTagRegistry.TWISTED_SLABS);
-        safeCopy(BlockTagRegistry.TWISTED_STAIRS, ItemTagRegistry.TWISTED_STAIRS);
-        safeCopy(BlockTagRegistry.TWISTED_WALLS, ItemTagRegistry.TWISTED_WALLS);
-        safeCopy(BlockTagRegistry.TWISTED_BLOCKS, ItemTagRegistry.TWISTED_BLOCKS);
 
         tag(ItemTagRegistry.ASPECTED_SPIRITS).add(
                 SACRED_SPIRIT.get(), WICKED_SPIRIT.get(), ARCANE_SPIRIT.get(), ELDRITCH_SPIRIT.get(),

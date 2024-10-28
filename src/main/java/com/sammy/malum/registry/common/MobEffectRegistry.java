@@ -37,6 +37,7 @@ public class MobEffectRegistry {
     public static final RegistryObject<MobEffect> REACTIVE_SHIELDING = EFFECTS.register("reactive_shielding", ReactiveShieldingEffect::new);
     public static final RegistryObject<MobEffect> SACRIFICIAL_EMPOWERMENT = EFFECTS.register("sacrificial_empowerment", SacrificialEmpowermentEffect::new);
 
+    public static final RegistryObject<MobEffect> ASCENSION = EFFECTS.register("ascension", AscensionEffect::new);
     public static final RegistryObject<MobEffect> GLUTTONY = EFFECTS.register("gluttony", GluttonyEffect::new);
     public static final RegistryObject<MobEffect> CANCEROUS_GROWTH = EFFECTS.register("cancerous_growth", GrowingFleshEffect::new);
     public static final RegistryObject<MobEffect> ARCANE_REVERBERATION = EFFECTS.register("arcane_reverberation", EchoingArcanaEffect::new);

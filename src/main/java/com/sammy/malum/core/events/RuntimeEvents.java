@@ -82,6 +82,7 @@ public class RuntimeEvents {
 
     @SubscribeEvent
     public static void onEntityFall(LivingFallEvent event) {
+        AscensionEffect.onEntityFall(event);
         CorruptedAerialAura.onEntityFall(event);
     }
 
