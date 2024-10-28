@@ -21,23 +21,26 @@ public class DataGenerators {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
-        ExistingFileHelper helper = event.getExistingFileHelper();
+        var generator = event.getGenerator();
+        var output = generator.getPackOutput();
+        var provider = event.getLookupProvider();
+        var helper = event.getExistingFileHelper();
 
-        MalumItemModels itemModelsProvider = new MalumItemModels(output, helper);
-        MalumBlockTags blockTagsProvider = new MalumBlockTags(output, provider, helper);
+        var itemModelsProvider = new MalumItemModels(output, helper);
+        var blockStatesProvider = new MalumBlockStates(output, helper, itemModelsProvider);
+
+        var blockTagsProvider = new MalumBlockTags(output, provider, helper);
+        var itemTagsProvider = new MalumItemTags(output, provider, blockTagsProvider.contentsGetter(), helper);
 
 //        generator.addProvider(event.includeClient(), new MalumFusionBlockModels(output));
 
-        generator.addProvider(event.includeClient(), new MalumBlockStates(output, helper, itemModelsProvider));
         generator.addProvider(event.includeClient(), itemModelsProvider);
-
+        generator.addProvider(event.includeClient(), blockStatesProvider);
 
         generator.addProvider(event.includeServer(), blockTagsProvider);
+        generator.addProvider(event.includeServer(), itemTagsProvider);
+
         generator.addProvider(event.includeServer(), new MalumBlockLootTables(output));
-        generator.addProvider(event.includeServer(), new MalumItemTags(output, provider, blockTagsProvider.contentsGetter(), helper));
 
         generator.addProvider(event.includeServer(), new MalumRecipes(output));
 
