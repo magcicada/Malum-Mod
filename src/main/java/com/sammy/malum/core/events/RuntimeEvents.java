@@ -17,8 +17,10 @@ import com.sammy.malum.common.item.curiosities.curios.sets.weeping.*;
 import com.sammy.malum.compability.tetra.*;
 import com.sammy.malum.core.handlers.*;
 import com.sammy.malum.core.listeners.*;
+import com.sammy.malum.registry.common.*;
 import net.minecraft.core.*;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
@@ -33,6 +35,11 @@ import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.level.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;
+import net.minecraftforge.registries.*;
+import team.lodestar.lodestone.registry.common.*;
+
+import java.util.*;
+import java.util.function.*;
 
 @Mod.EventBusSubscriber
 public class RuntimeEvents {
@@ -50,6 +57,22 @@ public class RuntimeEvents {
         CurioTokenOfGratitude.giveItem(event);
         SoulDataHandler.updateAi(event);
         TetraCompat.onEntityJoin(event);
+
+        if (event.getEntity() instanceof LivingEntity living) {
+            var attributes = new ArrayList<>(List.of(
+                    LodestoneAttributeRegistry.MAGIC_RESISTANCE, LodestoneAttributeRegistry.MAGIC_PROFICIENCY,
+                    AttributeRegistry.SCYTHE_PROFICIENCY, AttributeRegistry.SOUL_WARD_RECOVERY_RATE, AttributeRegistry.ARCANE_RESONANCE
+            ));
+
+            for (RegistryObject<Attribute> attribute : attributes) {
+                final AttributeInstance instance = living.getAttribute(attribute.get());
+                if (instance != null) {
+                    if (instance.getBaseValue() <= 0.01) {
+                        instance.setBaseValue(1.0);
+                    }
+                }
+            }
+        }
     }
 
 
