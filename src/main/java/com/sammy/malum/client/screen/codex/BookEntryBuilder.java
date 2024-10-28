@@ -63,7 +63,7 @@ public class BookEntryBuilder {
     }
 
     public BookEntryBuilder afterSomeTime() {
-        this.entryVisibleChecker = BookEntry.AFTER_SOME_TIME;
+        this.entryVisibleChecker = BookEntry.AFTER_THOROUGH_READING;
         return this;
     }
 

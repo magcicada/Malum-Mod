@@ -1065,7 +1065,7 @@ public class MalumLang extends LanguageProvider {
 
         addSimpleEntryHeader("a_personal_note", "A Personal Note", "A page from another book");
         addPages("a_personal_note",
-                "Within the book, you find a page written by someone other than the Author you are used to. It sticks out just barely from in between one of the chapters. The entries inside appear to be a show of gratitude of sorts, the names ring a bell.");
+                "Within the 'Arcana, a page sticks out just barely. As you examine it, the writing seems different than usual- out of this world. The texts inside appear to be a show of gratitude of sorts. The names ring a bell, but not to you.");
 
         addSimpleEntryHeader("a_personal_note.commendations", "Malum; Commendations", "A Thank You Letter");
         addHeadline("a_personal_note.commendations.wiresegal", "Wiresegal");
@@ -1085,7 +1085,7 @@ public class MalumLang extends LanguageProvider {
                 "The Coalition of Magic is a Supporter exclusive server organized by me and Joefoxe, without everyone's voices and support of the mod, it'd be difficult to find motivation to work as much as I can now. Thank you!");
         addHeadline("a_personal_note.commendations.translation", "Translation");
         addPages("a_personal_note.commendations.translation",
-                "There's this fella on github who very routinely pushes translations to the mod for the Chinese language, figured they deserve some thanks. They go by ChuijkYahus, so if you're reading this in Chinese it's thanks to them! If you plan to do a complete translation of Malum, let me know- I hope in the future this page can become a list.");
+                "There's this fella on github who very routinely pushes translations to the mod for the Chinese language, figured they deserve some thanks. They go by ChuijkYahus, so if you're reading this in Chinese it's thanks to them! If you plan to do a complete translation of Malum, let me know- I hope in the future I can replace this page with a list of credits.");
 
         addSimpleEntryHeader("a_personal_note.inspirations", "Malum; Inspirations", "What brought me here");
         addHeadline("a_personal_note.inspirations.thaumcraft", "Thaumcraft");

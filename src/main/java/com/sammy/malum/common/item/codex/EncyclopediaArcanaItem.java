@@ -1,6 +1,7 @@
 package com.sammy.malum.common.item.codex;
 
 import com.sammy.malum.client.screen.codex.screens.*;
+import net.minecraft.stats.*;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
@@ -14,6 +15,7 @@ public class EncyclopediaArcanaItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        player.awardStat(Stats.ITEM_USED.get(this));
         if (level.isClientSide) {
             final ItemStack stack = player.getItemInHand(hand);
             ArcanaProgressionScreen.openCodexViaItem(false);

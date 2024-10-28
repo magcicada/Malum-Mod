@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.sammy.malum.client.VoidRevelationHandler;
 import com.sammy.malum.client.screen.codex.pages.BookPage;
 import com.sammy.malum.client.screen.codex.pages.EntryReference;
+import com.sammy.malum.registry.common.item.*;
 import net.minecraft.client.*;
 import net.minecraft.network.chat.Style;
 import net.minecraft.stats.*;
@@ -15,7 +16,7 @@ import static com.sammy.malum.client.VoidRevelationHandler.RevelationType.BLACK_
 
 public class BookEntry {
 
-    public static final BooleanSupplier AFTER_SOME_TIME = () -> Minecraft.getInstance().player != null && (Minecraft.getInstance().player.getName().getString().equals("Dev") || Minecraft.getInstance().player.getStats().getValue(Stats.CUSTOM.get(Stats.PLAY_TIME)) > 14400);
+    public static final BooleanSupplier AFTER_THOROUGH_READING = () -> (Minecraft.getInstance().player != null && Minecraft.getInstance().player.getName().getString().equals("Dev") || timesOpenedBook() > 64);
     public static final BooleanSupplier AFTER_UMBRAL_CRYSTAL = () -> VoidRevelationHandler.hasSeenTheRevelation(BLACK_CRYSTAL);
 
     public final String identifier;
@@ -71,5 +72,16 @@ public class BookEntry {
 
     public static BookEntryBuilder build(String identifier) {
         return new BookEntryBuilder(identifier);
+    }
+
+    public static int timesOpenedBook() {
+        var player = Minecraft.getInstance().player;
+        if (player == null) {
+            return 0;
+        }
+        var stats = player.getStats();
+        final int arcana = stats.getValue(Stats.ITEM_USED.get(ItemRegistry.ENCYCLOPEDIA_ARCANA.get()));
+        final int esoterica = stats.getValue(Stats.ITEM_USED.get(ItemRegistry.ENCYCLOPEDIA_ESOTERICA.get()));
+        return arcana + esoterica;
     }
 }

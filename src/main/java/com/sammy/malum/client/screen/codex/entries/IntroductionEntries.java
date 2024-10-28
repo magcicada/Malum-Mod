@@ -44,6 +44,7 @@ public class IntroductionEntries {
                                                 .addPage(new HeadlineTextPage("a_personal_note.commendations.pessi_mysterio", "a_personal_note.commendations.pessi_mysterio.1"))
                                                 .addPage(new HeadlineTextPage("a_personal_note.commendations.kultik", "a_personal_note.commendations.kultik.1"))
                                                 .addPage(new HeadlineTextPage("a_personal_note.commendations.coalition_of_magic", "a_personal_note.commendations.coalition_of_magic.1"))
+                                                .addPage(new HeadlineTextPage("a_personal_note.commendations.translation", "a_personal_note.commendations.translation.1"))
                                 ))
                                 .addReference(new EntryReference(TOKEN_OF_GRATITUDE.get(),
                                         BookEntry.build("a_personal_note.inspirations")
