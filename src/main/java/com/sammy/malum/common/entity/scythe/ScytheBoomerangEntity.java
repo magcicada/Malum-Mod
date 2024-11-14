@@ -5,6 +5,7 @@ import com.sammy.malum.registry.common.*;
 import com.sammy.malum.registry.common.entity.*;
 import net.minecraft.nbt.*;
 import net.minecraft.network.syncher.*;
+import net.minecraft.server.level.*;
 import net.minecraft.util.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
@@ -108,7 +109,7 @@ public class ScytheBoomerangEntity extends AbstractScytheProjectileEntity {
                     float distance = distanceTo(scytheOwner);
 
                     if (isAlive() && distance < 3f) {
-                        if (scytheOwner instanceof Player player) {
+                        if (scytheOwner instanceof ServerPlayer player) {
                             ReboundEnchantment.pickupScythe(this, scythe, player);
                             SoundHelper.playSound(this, SoundRegistry.SCYTHE_CATCH.get(), 1.5f, RandomHelper.randomBetween(level().getRandom(), 0.75f, 1.25f));
                             remove(RemovalReason.DISCARDED);
