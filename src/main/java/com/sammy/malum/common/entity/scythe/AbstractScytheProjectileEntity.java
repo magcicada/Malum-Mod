@@ -100,7 +100,6 @@ public abstract class AbstractScytheProjectileEntity extends ThrowableItemProjec
             DamageSource source = DamageTypeHelper.create(level(), DamageTypeRegistry.SCYTHE_SWEEP, this, scytheOwner);
             var heldItem = scytheOwner.getMainHandItem();
             scytheOwner.setItemInHand(InteractionHand.MAIN_HAND, getItem());
-
             target.invulnerableTime = 0;
             boolean success = target.hurt(source, damage);
             if (success && target instanceof LivingEntity livingentity) {
