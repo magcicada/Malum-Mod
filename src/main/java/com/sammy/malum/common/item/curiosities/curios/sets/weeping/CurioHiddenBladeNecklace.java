@@ -18,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.*;
 import net.minecraft.server.level.*;
 import net.minecraft.util.*;
+import net.minecraft.world.*;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -80,26 +81,33 @@ public class CurioHiddenBladeNecklace extends MalumCurioItem implements IMalumEv
         if (CurioHelper.hasCurioEquipped(attacker, ItemRegistry.NECKLACE_OF_THE_HIDDEN_BLADE.get())) {
             MalumLivingEntityDataCapability.getCapabilityOptional(attacker).ifPresent(c -> {
                 var random = level.getRandom();
-                if (c.hiddenBladeCounterCooldown != 0) {
-                    if (c.hiddenBladeCounterCooldown <= COOLDOWN_DURATION) {
-                        SoundHelper.playSound(attacker, SoundRegistry.HIDDEN_BLADE_DISRUPTED.get(), 1f, RandomHelper.randomBetween(random, 0.7f, 0.8f));
-                    }
-                    c.hiddenBladeCounterCooldown = (int) (COOLDOWN_DURATION * 1.5);
-                    MalumLivingEntityDataCapability.syncSelf((ServerPlayer) attacker);
-                    return;
-                }
+//                if (c.hiddenBladeCounterCooldown != 0) {
+//                    if (c.hiddenBladeCounterCooldown <= COOLDOWN_DURATION) {
+//                        SoundHelper.playSound(attacker, SoundRegistry.HIDDEN_BLADE_DISRUPTED.get(), 1f, RandomHelper.randomBetween(random, 0.7f, 0.8f));
+//                    }
+//                    c.hiddenBladeCounterCooldown = (int) (COOLDOWN_DURATION * 1.5);
+//                    MalumLivingEntityDataCapability.syncSelf((ServerPlayer) attacker);
+//                    return;
+//                }
                 var effect = attacker.getEffect(MobEffectRegistry.WICKED_INTENT.get());
                 if (effect == null) {
                     return;
                 }
+                var scytheWeapon = SoulDataHandler.getScytheWeapon(source, attacker);
+                var heldItem = attacker.getItemInHand(InteractionHand.MAIN_HAND);
+                attacker.setItemInHand(InteractionHand.MAIN_HAND, scytheWeapon);
+
+                var damageDealer = source.getDirectEntity() != null ? source.getDirectEntity() : attacker;
+                var damageCenter = damageDealer.position().add(attacker.getLookAngle().scale(4));
                 int duration = 25;
                 var attributes = attacker.getAttributes();
                 float multiplier = (float) Mth.clamp(attributes.getValue(Attributes.ATTACK_SPEED), 0, 1) * 2;
-                float baseDamage = (float) (attributes.getValue(Attributes.ATTACK_DAMAGE) / duration) * multiplier * effect.amplifier;
+                float physicalDamage = (float) (attributes.getValue(Attributes.ATTACK_DAMAGE) / duration) * multiplier * effect.amplifier;
                 float magicDamage = (float) (attributes.getValue(LodestoneAttributeRegistry.MAGIC_DAMAGE.get()) / duration) * multiplier;
-                var center = attacker.position().add(attacker.getLookAngle().scale(4));
-                var entity = new HiddenBladeDelayedImpactEntity(level, center.x, center.y - 3f + attacker.getBbHeight() / 2f, center.z);
-                entity.setData(attacker, baseDamage, magicDamage, duration);
+
+
+                var entity = new HiddenBladeDelayedImpactEntity(level, damageCenter.x, damageCenter.y - 3f + attacker.getBbHeight() / 2f, damageCenter.z);
+                entity.setData(attacker, physicalDamage, magicDamage, duration);
                 entity.setItem(stack);
                 level.addFreshEntity(entity);
                 attacker.removeEffect(effect.getEffect());
@@ -108,7 +116,6 @@ public class CurioHiddenBladeNecklace extends MalumCurioItem implements IMalumEv
                     SoundHelper.playSound(attacker, SoundRegistry.HIDDEN_BLADE_UNLEASHED.get(), 3f, RandomHelper.randomBetween(random, 0.75f, 1.25f));
                 }
                 var particle = ParticleHelper.createSlashingEffect(ParticleEffectTypeRegistry.HIDDEN_BLADE_COUNTER_FLURRY);
-                final ItemStack scytheWeapon = SoulDataHandler.getScytheWeapon(source, attacker);
                 if (scytheWeapon.getItem() instanceof ISpiritAffiliatedItem spiritAffiliatedItem) {
                     particle.setSpiritType(spiritAffiliatedItem);
                 }
@@ -116,6 +123,7 @@ public class CurioHiddenBladeNecklace extends MalumCurioItem implements IMalumEv
                         .mirrorRandomly(random)
                         .spawnForwardSlashingParticle(attacker);
                 MalumLivingEntityDataCapability.syncSelf((ServerPlayer) attacker);
+                attacker.setItemInHand(InteractionHand.MAIN_HAND, heldItem);
                 event.setCanceled(true);
             });
         }

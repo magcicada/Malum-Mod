@@ -67,7 +67,13 @@ public class ReboundEnchantment extends Enchantment {
         if (!player.isCreative()) {
             int enchantmentLevel = scythe.getEnchantmentLevel(EnchantmentRegistry.REBOUND.get());
             if (enchantmentLevel < 4) {
-                player.getCooldowns().addCooldown(scythe.getItem(), 100 - 25 * (enchantmentLevel - 1));
+                int duration = 100 - 25 * (enchantmentLevel - 1);
+                if (entity.enemiesHit > 0) {
+                    duration -= (entity.enemiesHit+1) * 20;
+                }
+                if (duration > 0) {
+                    player.getCooldowns().addCooldown(scythe.getItem(), duration);
+                }
             }
         }
         TemporarilyDisabledItem.enable(player, entity.slot);
