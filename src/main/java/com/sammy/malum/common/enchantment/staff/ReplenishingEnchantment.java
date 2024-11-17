@@ -34,7 +34,6 @@ public class ReplenishingEnchantment extends Enchantment {
                     replenishStaffCooldown(staff, player, level);
                     MALUM_CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new SyncStaffCooldownChangesPacket(staff, level));
                 }
-                IronsSpellsCompat.recoverSpellCooldowns(player, level);
             }
         }
     }
